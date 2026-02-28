@@ -1,0 +1,516 @@
+/* ================================================================
+   STIGA FINANCE — LANDING PAGE MOBILE
+   Arquivo separado para responsividade mobile
+   Breakpoints: 768px (tablet), 480px (celular), 360px (pequeno)
+   ================================================================ */
+
+/* ================================================================
+   GLOBAL MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    * { box-sizing: border-box; }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .container {
+        padding: 0 16px !important;
+        width: 100% !important;
+    }
+
+    section {
+        padding: 60px 0 !important;
+    }
+
+    .section-title {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem !important;
+        padding: 0 10px !important;
+    }
+}
+
+/* ================================================================
+   NAVBAR MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 12px 16px !important;
+    }
+
+    .nav-logo {
+        gap: 8px !important;
+    }
+
+    .logo-img {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .logo-text {
+        font-size: 1rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .nav-links {
+        display: none !important;
+    }
+
+    .mobile-menu-btn {
+        display: flex !important;
+    }
+
+    .nav-cta {
+        display: none !important;
+    }
+}
+
+/* Menu mobile aberto */
+@media (max-width: 768px) {
+    .mobile-menu {
+        position: fixed !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: rgba(10, 14, 23, 0.98) !important;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.3) !important;
+        padding: 20px !important;
+        z-index: 999 !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    .mobile-menu .nav-link {
+        font-size: 1rem !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+        display: block !important;
+    }
+}
+
+/* ================================================================
+   HERO MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 60px !important;
+        min-height: auto !important;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+        text-align: center !important;
+    }
+
+    .hero-content {
+        order: 1 !important;
+    }
+
+    .hero-visual {
+        order: 2 !important;
+    }
+
+    .hero-badge {
+        justify-content: center !important;
+        font-size: 0.78rem !important;
+    }
+
+    .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 28px !important;
+    }
+
+    .hero-cta {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    .mega-btn {
+        width: 100% !important;
+        max-width: 340px !important;
+        font-size: 0.85rem !important;
+        padding: 16px 24px !important;
+        justify-content: center !important;
+    }
+
+    .hero-benefits {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        margin-top: 24px !important;
+    }
+
+    .hero-benefit {
+        justify-content: center !important;
+        font-size: 0.9rem !important;
+    }
+
+    .stats-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+        margin-top: 40px !important;
+    }
+
+    .stat-item {
+        padding: 16px 12px !important;
+    }
+
+    .stat-number {
+        font-size: 1.8rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.78rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.7rem !important;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+/* ================================================================
+   MOCKUP / DASHBOARD MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .mockup-3d {
+        width: 100% !important;
+        max-width: 340px !important;
+        margin: 0 auto !important;
+        transform: none !important;
+    }
+
+    .mockup-3d img {
+        border-radius: 16px !important;
+    }
+
+    .floating {
+        animation: none !important;
+    }
+}
+
+/* ================================================================
+   FEATURES MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .feature-card {
+        padding: 24px 20px !important;
+        text-align: center !important;
+    }
+
+    .feature-icon {
+        font-size: 2rem !important;
+        margin-bottom: 12px !important;
+        justify-content: center !important;
+        display: flex !important;
+    }
+
+    .feature-card h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ================================================================
+   SOLUTION / COMPARISON MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .solution-content {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .comparison-table {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .comparison-col {
+        padding: 24px 20px !important;
+    }
+
+    .highlight-col {
+        transform: scale(1) !important;
+        order: -1 !important;
+    }
+
+    .comparison-col h3 {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* ================================================================
+   PRICING / PLANOS MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+        padding: 0 8px !important;
+    }
+
+    .pricing-card {
+        padding: 32px 24px !important;
+    }
+
+    .pricing-card.featured {
+        transform: scale(1) !important;
+        padding-top: 50px !important;
+    }
+
+    .pricing-card-wrapper {
+        padding-top: 30px !important;
+    }
+
+    .popular-badge {
+        font-size: 0.75rem !important;
+        padding: 7px 20px !important;
+    }
+
+    .pricing-icon {
+        font-size: 2rem !important;
+    }
+
+    .pricing-header h3 {
+        font-size: 1.6rem !important;
+    }
+
+    .amount {
+        font-size: 3.5rem !important;
+    }
+
+    .currency {
+        font-size: 1.2rem !important;
+    }
+
+    .period {
+        font-size: 1rem !important;
+    }
+
+    .pricing-features {
+        margin: 20px 0 !important;
+    }
+
+    .pricing-features li {
+        font-size: 0.9rem !important;
+        padding: 8px 0 !important;
+    }
+
+    .btn-pricing {
+        padding: 14px 20px !important;
+        font-size: 0.85rem !important;
+        width: 100% !important;
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    #countdown {
+        font-size: 1.3rem !important;
+    }
+
+    .savings-badge {
+        padding: 16px !important;
+    }
+
+    .guarantee-strip {
+        margin: 30px 16px 0 !important;
+        padding: 20px !important;
+    }
+
+    .guarantee-title {
+        font-size: 1rem !important;
+    }
+
+    .guarantee-text {
+        font-size: 0.88rem !important;
+    }
+}
+
+/* ================================================================
+   DEPOIMENTOS MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .testimonials-carousel {
+        padding: 0 8px !important;
+    }
+
+    .testimonial-card {
+        min-width: 280px !important;
+        max-width: 280px !important;
+        padding: 24px 20px !important;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem !important;
+    }
+
+    .carousel-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1rem !important;
+    }
+
+    .video-testimonials-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* ================================================================
+   FAQ MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .faq-list {
+        gap: 12px !important;
+    }
+
+    .faq-item {
+        padding: 0 !important;
+    }
+
+    .faq-question {
+        padding: 16px 18px !important;
+        font-size: 0.92rem !important;
+        gap: 12px !important;
+    }
+
+    .faq-answer {
+        padding: 0 18px 16px !important;
+        font-size: 0.88rem !important;
+    }
+}
+
+/* ================================================================
+   CTA FINAL MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: 60px 16px !important;
+    }
+
+    .cta-content h2 {
+        font-size: 1.8rem !important;
+        line-height: 1.3 !important;
+    }
+
+    .cta-content p {
+        font-size: 0.95rem !important;
+        margin-bottom: 28px !important;
+    }
+
+    .cta-btn {
+        width: 100% !important;
+        max-width: 340px !important;
+        font-size: 0.85rem !important;
+        padding: 16px 24px !important;
+    }
+
+    .cta-trust {
+        flex-direction: column !important;
+        gap: 8px !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ================================================================
+   FOOTER MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        text-align: center !important;
+    }
+
+    .footer-logo {
+        margin: 0 auto 16px !important;
+    }
+
+    .footer-brand p {
+        font-size: 0.9rem !important;
+    }
+
+    .social-links {
+        justify-content: center !important;
+    }
+
+    .footer-links {
+        align-items: center !important;
+    }
+
+    .footer-bottom {
+        flex-direction: column !important;
+        gap: 8px !important;
+        text-align: center !important;
+        font-size: 0.82rem !important;
+    }
+}
+
+/* ================================================================
+   SCROLL TO TOP MOBILE
+   ================================================================ */
+@media (max-width: 768px) {
+    .scroll-top {
+        bottom: 20px !important;
+        right: 16px !important;
+        width: 44px !important;
+        height: 44px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* ================================================================
+   TELAS MUITO PEQUENAS (360px)
+   ================================================================ */
+@media (max-width: 380px) {
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+
+    .amount {
+        font-size: 3rem !important;
+    }
+
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+
+    .mega-btn {
+        font-size: 0.8rem !important;
+        padding: 14px 18px !important;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+/* ================================================================
+   FIM LANDING MOBILE CSS
+   ================================================================ */

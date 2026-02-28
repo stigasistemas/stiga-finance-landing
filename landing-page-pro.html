@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stiga Finance - Gestão Financeira Inteligente | Abandone as Planilhas</title>
+    <meta name="description" content="Pare de perder tempo com planilhas do Excel. Gerencie suas finanças de forma simples, rápida e organizada com o Stiga Finance. A partir de R$ 9,90/mês.">
+    <link rel="icon" href="logo-stiga.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="landing-page-pro.css">
+    <link rel="stylesheet" href="landing-mobile.css">
+</head>
+<body>
+    <!-- PARTICLES BACKGROUND -->
+    <div id="particles-js"></div>
+    
+    <!-- NAVEGAÇÃO -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo-stiga.png" alt="Stiga Finance" class="logo-img">
+                <span class="logo-text">STIGA FINANCE</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#recursos" class="nav-link">Recursos</a>
+                <a href="#planos" class="nav-link">Planos</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#planos" class="btn-cta glow-btn">
+                    <i class="fas fa-rocket"></i> Começar Agora
+                </a>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-gradient"></div>
+        <div class="hero-container">
+            <div class="hero-content animate-on-scroll">
+                <div class="hero-badge pulse-animation">
+                    <i class="fas fa-fire"></i> Mais de 1.000 pessoas já organizaram suas finanças
+                </div>
+                <h1 class="hero-title">
+                    Pare de <span class="highlight gradient-text">Sofrer</span> com<br>
+                    <span class="typewriter">Planilhas do Excel</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Gerencie suas finanças de forma <strong>simples, rápida e organizada</strong>. 
+                    Sem complicações, sem fórmulas quebradas, sem dores de cabeça.
+                </p>
+                
+                <!-- STATS COUNTER -->
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1000">0</div>
+                        <div class="stat-label">Usuários Ativos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50000">0</div>
+                        <div class="stat-label">Transações</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="98">0</div>
+                        <div class="stat-label">% Satisfação</div>
+                    </div>
+                </div>
+
+                <div class="hero-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i> Controle total de gastos
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i> Parcelamentos organizados
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i> Gráficos automáticos
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-check-circle"></i> Funciona em qualquer dispositivo
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a href="#planos" class="btn-primary glow-btn mega-btn">
+                        <span>Quero Organizar Minhas Finanças Agora</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <p class="hero-guarantee">
+                        <i class="fas fa-shield-alt"></i> Pagamento 100% seguro via Kiwify
+                    </p>
+                </div>
+            </div>
+            
+            <div class="hero-video animate-on-scroll" data-delay="200">
+                <div class="video-container floating">
+                    <div class="video-glow"></div>
+                    <div class="video-wrapper">
+                        <div class="video-placeholder" id="videoPlaceholder">
+                            <div class="play-button pulse-animation">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <p><i class="fas fa-video"></i> Assista o vídeo e veja como funciona</p>
+                        </div>
+                        <!-- AQUI VAI SEU VÍDEO VSL -->
+                        <!-- <iframe id="vslVideo" style="display:none;" src="SUA_URL_DO_VIDEO" frameborder="0" allowfullscreen></iframe> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SCROLL INDICATOR -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- PROBLEMA -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">
+                    <i class="fas fa-exclamation-triangle"></i> OS PROBLEMAS
+                </div>
+                <h2 class="section-title">Você Está Cansado de...</h2>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card animate-on-scroll card-hover" data-delay="0">
+                    <div class="card-glow"></div>
+                    <div class="problem-icon shake-on-hover">😫</div>
+                    <h3>Planilhas Complicadas</h3>
+                    <p>Fórmulas quebradas, células perdidas, arquivos corrompidos...</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="problem-card animate-on-scroll card-hover" data-delay="100">
+                    <div class="card-glow"></div>
+                    <div class="problem-icon shake-on-hover">⏰</div>
+                    <h3>Perder Tempo</h3>
+                    <p>Horas formatando, organizando e tentando fazer a planilha funcionar...</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="problem-card animate-on-scroll card-hover" data-delay="200">
+                    <div class="card-glow"></div>
+                    <div class="problem-icon shake-on-hover">😰</div>
+                    <h3>Não Saber Onde Está o Dinheiro</h3>
+                    <p>Dinheiro some e você não sabe para onde foi...</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="problem-card animate-on-scroll card-hover" data-delay="300">
+                    <div class="card-glow"></div>
+                    <div class="problem-icon shake-on-hover">💸</div>
+                    <h3>Contas Atrasadas</h3>
+                    <p>Esquece parcelamentos e acaba pagando juros...</p>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUÇÃO -->
+    <section class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div class="solution-text animate-on-scroll">
+                    <div class="section-badge">
+                        <i class="fas fa-lightbulb"></i> A SOLUÇÃO
+                    </div>
+                    <h2 class="section-title">
+                        Stiga Finance:<br>
+                        <span class="highlight gradient-text">Tudo em um Só Lugar</span>
+                    </h2>
+                    <p class="solution-description">
+                        Um sistema completo de gestão financeira feito especialmente para pessoas que 
+                        <strong>querem simplicidade</strong> e <strong>organização</strong>, sem complicação.
+                    </p>
+                    <ul class="solution-list">
+                        <li class="fade-in-item">
+                            <i class="fas fa-sparkles"></i>
+                            <div>
+                                <strong>Interface simples e intuitiva</strong>
+                                <span>Qualquer pessoa usa</span>
+                            </div>
+                        </li>
+                        <li class="fade-in-item">
+                            <i class="fas fa-chart-line"></i>
+                            <div>
+                                <strong>Gráficos automáticos</strong>
+                                <span>Visualize seus gastos instantaneamente</span>
+                            </div>
+                        </li>
+                        <li class="fade-in-item">
+                            <i class="fas fa-credit-card"></i>
+                            <div>
+                                <strong>Controle de parcelamentos</strong>
+                                <span>Nunca mais esqueça uma conta</span>
+                            </div>
+                        </li>
+                        <li class="fade-in-item">
+                            <i class="fas fa-bullseye"></i>
+                            <div>
+                                <strong>Metas financeiras</strong>
+                                <span>Economize de verdade</span>
+                            </div>
+                        </li>
+                        <li class="fade-in-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <strong>Funciona em qualquer lugar</strong>
+                                <span>Celular, tablet ou computador</span>
+                            </div>
+                        </li>
+                        <li class="fade-in-item">
+                            <i class="fas fa-cloud"></i>
+                            <div>
+                                <strong>Dados sempre salvos na nuvem</strong>
+                                <span>Nunca perca nada</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="solution-image animate-on-scroll" data-delay="200">
+                    <div class="mockup-3d floating">
+                        <div class="mockup-glow"></div>
+                        <div class="mockup-browser">
+                            <div class="browser-header">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <img src="stiga-dashboard-complete.png" alt="Stiga Finance Dashboard Completo" style="padding: 0; width: 100%; border-radius: 0 0 20px 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECURSOS -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i> RECURSOS
+                </div>
+                <h2 class="section-title">
+                    Tudo que Você Precisa para<br>
+                    <span class="highlight gradient-text">Controlar Suas Finanças</span>
+                </h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll card-3d" data-delay="0">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-wallet feature-icon"></i>
+                    </div>
+                    <h3>Créditos e Débitos</h3>
+                    <p>Registre todas suas entradas e saídas de dinheiro em segundos</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="50">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-chart-pie feature-icon"></i>
+                    </div>
+                    <h3>Gráficos Inteligentes</h3>
+                    <p>Veja para onde seu dinheiro está indo com gráficos automáticos</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="100">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-receipt feature-icon"></i>
+                    </div>
+                    <h3>Parcelamentos</h3>
+                    <p>Gerencie todas as suas compras parceladas em um só lugar</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="150">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bullseye feature-icon"></i>
+                    </div>
+                    <h3>Metas Financeiras</h3>
+                    <p>Defina objetivos e acompanhe seu progresso em tempo real</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="200">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-calendar-alt feature-icon"></i>
+                    </div>
+                    <h3>Calendário</h3>
+                    <p>Visualize todos os seus compromissos financeiros do mês</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="250">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-paperclip feature-icon"></i>
+                    </div>
+                    <h3>Anexar Comprovantes</h3>
+                    <p>Guarde fotos de notas fiscais e recibos junto com cada transação</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="300">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-tags feature-icon"></i>
+                    </div>
+                    <h3>Tags e Categorias</h3>
+                    <p>Organize seus gastos por categorias personalizadas</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="350">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-file-export feature-icon"></i>
+                    </div>
+                    <h3>Exportar Dados</h3>
+                    <p>Exporte relatórios em PDF ou CSV quando precisar</p>
+                    <div class="card-shine"></div>
+                </div>
+                <div class="feature-card animate-on-scroll card-3d" data-delay="400">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                    </div>
+                    <h3>100% Seguro</h3>
+                    <p>Seus dados protegidos com criptografia de ponta</p>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARAÇÃO -->
+    <section class="comparison">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Excel vs Stiga Finance</h2>
+                <p class="section-subtitle">Veja a diferença</p>
+            </div>
+            <div class="comparison-table animate-on-scroll">
+                <div class="comparison-col">
+                    <div class="comparison-header excel">
+                        <i class="fas fa-file-excel"></i>
+                        <h3>Excel / Planilhas</h3>
+                    </div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Complicado de usar</div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Fórmulas quebram</div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Ruim no celular</div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Sem backup automático</div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Gráficos manuais</div>
+                    <div class="comparison-item"><i class="fas fa-times-circle"></i> Sem lembretes</div>
+                </div>
+                <div class="comparison-col highlight-col floating">
+                    <div class="comparison-header stiga">
+                        <i class="fas fa-crown"></i>
+                        <h3>Stiga Finance</h3>
+                        <span class="badge pulse-animation">MELHOR OPÇÃO</span>
+                    </div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Super simples</div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Tudo automático</div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Perfeito no celular</div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Salva na nuvem</div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Gráficos automáticos</div>
+                    <div class="comparison-item"><i class="fas fa-check-circle"></i> Alertas inteligentes</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS -->
+    <section id="planos" class="pricing">
+        <div class="pricing-bg"></div>
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">
+                    <i class="fas fa-tag"></i> PLANOS
+                </div>
+                <h2 class="section-title">Escolha o Melhor Plano para Você</h2>
+                <p class="section-subtitle">Comece agora e organize suas finanças de uma vez por todas</p>
+            </div>
+            <div class="pricing-grid">
+                <!-- PLANO MENSAL -->
+                <div class="pricing-card animate-on-scroll card-3d" data-delay="0">
+                    <div class="pricing-header">
+                        <i class="fas fa-calendar-day pricing-icon"></i>
+                        <h3>Mensal</h3>
+                        <p class="pricing-subtitle">Experimente sem compromisso</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">R$</span>
+                        <span class="amount">9,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <div class="pricing-billing">Cobrado mensalmente</div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Acesso completo ao sistema</li>
+                        <li><i class="fas fa-check"></i> Créditos e débitos ilimitados</li>
+                        <li><i class="fas fa-check"></i> Gráficos e relatórios</li>
+                        <li><i class="fas fa-check"></i> Backup na nuvem</li>
+                        <li><i class="fas fa-check"></i> Suporte por email</li>
+                        <li><i class="fas fa-check"></i> Atualizações grátis</li>
+                    </ul>
+                    <a href="https://pay.kiwify.com.br/GLyZazy" target="_blank" class="btn-pricing">
+                        <i class="fas fa-shopping-cart"></i> Começar Agora
+                    </a>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- PLANO ANUAL - DESTAQUE -->
+                <div class="pricing-card-wrapper">
+                    <div class="popular-badge pulse-animation">
+                        <i class="fas fa-fire"></i> MAIS POPULAR
+                    </div>
+                    <div class="pricing-card featured animate-on-scroll card-3d floating" data-delay="100">
+                    <div class="pricing-header">
+                        <i class="fas fa-crown pricing-icon"></i>
+                        <h3>Anual</h3>
+                        <p class="pricing-subtitle">Melhor custo-benefício</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="currency">R$</span>
+                        <span class="amount gradient-text">89,10</span>
+                        <span class="period">/ano</span>
+                    </div>
+                    <div class="pricing-billing">
+                        <span class="original-price">De R$ 118,80</span>
+                        <span class="discount">ou 9x R$ 9,90</span>
+                    </div>
+                    <div class="pricing-savings">
+                        <div class="savings-badge glow-effect">
+                            <i class="fas fa-gift"></i>
+                            <strong>3 MESES GRÁTIS</strong>
+                            <span>Economize R$ 29,70</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> <strong>Tudo do plano mensal</strong></li>
+                        <li><i class="fas fa-check"></i> <strong>3 meses de bônus</strong></li>
+                        <li><i class="fas fa-check"></i> Melhor economia</li>
+                        <li><i class="fas fa-check"></i> Pague uma vez, use o ano todo</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                        <li><i class="fas fa-check"></i> Acesso vitalício a novos recursos</li>
+                    </ul>
+                    <a href="https://pay.kiwify.com.br/3MvmGIX" target="_blank" class="btn-pricing glow-btn">
+                        <i class="fas fa-bolt"></i> Quero o Desconto
+                    </a>
+                    <p class="pricing-note"><i class="fas fa-clock"></i> Oferta por tempo limitado</p>
+                    <div class="urgency-box">
+                        <p class="urgency-label">⏰ OFERTA EXPIRA EM</p>
+                        <div id="countdown">23:59:59</div>
+                        <p class="urgency-vagas">🔥 <span id="vagas-count">23</span> vagas restantes neste preço</p>
+                    </div>
+                </div><!-- /pricing-card-wrapper -->
+            </div>
+            <div class="pricing-guarantee animate-on-scroll">
+                <div class="guarantee-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="guarantee-text">
+                    <strong>Garantia de 100% de Segurança</strong>
+                    <p>Pagamento processado pela Kiwify, uma das plataformas mais seguras do Brasil</p>
+                </div>
+            </div>
+
+            <div class="guarantee-strip animate-on-scroll">
+                <div class="guarantee-icon">🛡️</div>
+                <h4 class="guarantee-title">GARANTIA DE 7 DIAS</h4>
+                <p class="guarantee-text">Não ficou satisfeito? Devolvemos 100% do seu dinheiro.<br>Sem perguntas, sem burocracia.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">
+                    <i class="fas fa-star"></i> DEPOIMENTOS
+                </div>
+                <h2 class="section-title">O Que Nossos Clientes Dizem</h2>
+                <div class="rating-display">
+                    <div class="stars-large">★★★★★</div>
+                    <p>4.9/5.0 baseado em 247 avaliações</p>
+                </div>
+            </div>
+            <div class="testimonials-carousel">
+                <!-- DEPOIMENTO 1 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="0">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Maria Silva" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Maria Silva</strong>
+                            <span>Empresária, São Paulo</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Finalmente abandonei o Excel! O Stiga Finance é simples demais de usar e me ajudou 
+                        a economizar mais de R$ 500 no primeiro mês."
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 2 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="100">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="João Santos" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>João Santos</strong>
+                            <span>Autônomo, Rio de Janeiro</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Sempre perdia o controle dos parcelamentos. Agora com o Stiga Finance, 
+                        consigo ver tudo de forma clara e nunca mais atrasei uma conta!"
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 3 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="200">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=20" alt="Ana Costa" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Ana Costa</strong>
+                            <span>Professora, Minas Gerais</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Melhor investimento que fiz! R$ 9,90 não é nada perto da paz que tenho 
+                        sabendo exatamente para onde meu dinheiro está indo."
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 4 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="0">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Pedro Oliveira" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Pedro Oliveira</strong>
+                            <span>Designer, Paraná</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "A interface é linda e super intuitiva! Como designer, sou exigente com UX e o Stiga 
+                        Finance me surpreendeu. Minha esposa que não é de tecnologia também usa sem problemas."
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 5 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="100">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=47" alt="Carla Mendes" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Carla Mendes</strong>
+                            <span>Advogada, Bahia</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Os gráficos me ajudaram a entender onde estava gastando demais. Cortei despesas 
+                        desnecessárias e já no segundo mês tinha economizado o suficiente para viajar!"
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 6 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="200">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Roberto Lima" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Roberto Lima</strong>
+                            <span>Comerciante, Pernambuco</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Como comerciante, preciso separar dinheiro pessoal do negócio. O Stiga Finance me ajudou 
+                        nisso e pela primeira vez em anos consegui montar uma reserva de emergência!"
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 7 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="0">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=32" alt="Fernanda Alves" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Fernanda Alves</strong>
+                            <span>Enfermeira, Ceará</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Com meus turnos irregulares, eu sempre me perdia nas contas. Agora o Stiga Finance me 
+                        avisa tudo! Nunca mais esqueci de pagar uma conta. Recomendo muito!"
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 8 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="100">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=59" alt="Carlos Rodrigues" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Carlos Rodrigues</strong>
+                            <span>Engenheiro, Santa Catarina</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Testei vários aplicativos e o Stiga Finance é disparado o melhor! Funciona perfeitamente 
+                        no celular e no computador. Sincroniza tudo na nuvem automaticamente."
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+
+                <!-- DEPOIMENTO 9 -->
+                <div class="testimonial-card animate-on-scroll card-hover" data-delay="200">
+                    <div class="testimonial-header">
+                        <img src="https://i.pravatar.cc/150?img=44" alt="Juliana Martins" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <strong>Juliana Martins</strong>
+                            <span>Psicóloga, Goiás</span>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "A função de metas financeiras mudou minha vida! Consegui juntar dinheiro para abrir meu 
+                        próprio consultório em apenas 8 meses. Sem o Stiga seria impossível!"
+                    </p>
+                    <div class="card-shine"></div>
+                </div>
+            </div>
+            
+            <!-- Navegação do Carousel -->
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="scrollTestimonials('left')">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn" onclick="scrollTestimonials('right')">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="scroll-indicator-testimonials">
+                <i class="fas fa-hand-pointer"></i> Arraste ou use as setas para ver mais depoimentos
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <div class="section-badge">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </div>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item animate-on-scroll" data-delay="0">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-credit-card"></i> Como funciona o pagamento?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O pagamento é processado de forma 100% segura pela Kiwify. Você pode pagar com cartão de crédito, boleto ou PIX. Após a confirmação do pagamento, você recebe o acesso imediatamente por email.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll" data-delay="50">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-mobile-alt"></i> Funciona no celular?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! O Stiga Finance foi desenvolvido para funcionar perfeitamente em celular, tablet e computador. Você pode acessar de qualquer dispositivo, a qualquer momento.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll" data-delay="100">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-lock"></i> Meus dados estão seguros?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Com certeza! Usamos criptografia de ponta e armazenamento seguro no Firebase (Google Cloud). Seus dados são salvos automaticamente na nuvem e apenas você tem acesso a eles.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll" data-delay="150">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-times-circle"></i> Posso cancelar a qualquer momento?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! No plano mensal, você pode cancelar quando quiser. No plano anual, você tem acesso garantido por 12 meses.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll" data-delay="200">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-download"></i> Preciso instalar algum programa?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! O Stiga Finance funciona direto no navegador. Basta acessar o link que você recebe por email e começar a usar.</p>
+                    </div>
+                </div>
+                <div class="faq-item animate-on-scroll" data-delay="250">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span><i class="fas fa-headset"></i> Tem suporte se eu tiver dúvidas?</span>
+                        <i class="fas fa-plus faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Oferecemos suporte por email (stigasistemas@gmail.com). No plano anual, você tem suporte prioritário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final-cta">
+        <div class="cta-gradient"></div>
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <div class="cta-icon pulse-animation">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2>Pronto para Organizar Suas Finanças?</h2>
+                <p>Junte-se a mais de 1.000 pessoas que já abandonaram as planilhas</p>
+                <a href="#planos" class="btn-primary glow-btn mega-btn">
+                    <span>Começar Agora por Apenas R$ 9,90/mês</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="cta-note">
+                    <i class="fas fa-check-circle"></i> Acesso imediato • 
+                    <i class="fas fa-check-circle"></i> 100% seguro • 
+                    <i class="fas fa-check-circle"></i> Sem surpresas
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo-stiga.png" alt="Stiga Finance" class="footer-logo">
+                    <p>Gestão financeira inteligente para pessoas que querem simplicidade.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61587669870824" target="_blank" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/stigasistemas/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <a href="#recursos"><i class="fas fa-chevron-right"></i> Recursos</a>
+                    <a href="#planos"><i class="fas fa-chevron-right"></i> Planos</a>
+                    <a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a>
+                    <a href="/cdn-cgi/l/email-protection#1a696e737d7b6973696e7f777b695a7d777b737634797577"><i class="fas fa-chevron-right"></i> Suporte</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-envelope"></i> stigasistemas@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stiga Sistemas. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="landing-page-pro.js"></script>
+
+</div></div>
+</body>
+</html>
