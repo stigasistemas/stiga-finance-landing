@@ -104,8 +104,6 @@ let cursor = null;
 let cursorFollower = null;
 
 function initCustomCursor() {
-    // Não inicializar cursor em dispositivos touch/mobile
-    if (window.innerWidth <= 768 || ('ontouchstart' in window)) return;
     cursor = document.createElement('div');
     cursor.style.cssText = `
         position: fixed;
@@ -342,7 +340,16 @@ function toggleMobileMenu() {
         navLinks.style.padding = '20px';
         navLinks.style.gap = '20px';
         navLinks.style.borderTop = '1px solid rgba(212, 175, 55, 0.2)';
+        navLinks.style.zIndex = '9999';
         mobileBtn.classList.add('active');
+
+        // Fechar menu ao clicar em qualquer link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.style.display = 'none';
+                mobileBtn.classList.remove('active');
+            }, { once: true });
+        });
     }
 }
 
@@ -401,8 +408,6 @@ document.querySelectorAll('.fade-in-item').forEach(item => {
 // PARALLAX SCROLL EFFECT
 // ================================================================
 window.addEventListener('scroll', () => {
-    // Desligar parallax no mobile para não esconder o botão CTA
-    if (window.innerWidth <= 768 || ('ontouchstart' in window)) return;
     const scrolled = window.pageYOffset;
     
     const heroContent = document.querySelector('.hero-content');
@@ -536,22 +541,19 @@ console.log('✅ Sistema de vídeo testimonials carregado');
 // ================================================================
 function scrollTestimonials(direction) {
     const carousel = document.querySelector('.testimonials-carousel');
-    // No mobile, usa a largura real do card para scroll snap perfeito
-    const isMobile = window.innerWidth <= 768;
-    const scrollAmount = isMobile 
-        ? carousel.offsetWidth  // scroll de 1 card por vez no mobile
-        : 380;
-    
-    if (direction === 'left') {
-        carousel.scrollBy({
-            left: -scrollAmount,
-            behavior: 'smooth'
-        });
+    if (!carousel) return;
+
+    if (window.innerWidth <= 768) {
+        const cards = carousel.querySelectorAll('.testimonial-card');
+        const cardWidth = cards[0].offsetWidth + 16;
+        const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
+        const maxIndex = cards.length - 1;
+        let nextIndex = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
+        nextIndex = Math.max(0, Math.min(nextIndex, maxIndex));
+        carousel.scrollTo({ left: nextIndex * cardWidth, behavior: 'smooth' });
     } else {
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
+        const scrollAmount = 380;
+        carousel.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     }
 }
 
@@ -590,23 +592,18 @@ if (carousel) {
     
     carousel.style.cursor = 'grab';
 
-    // Suporte touch para mobile
+    // ── Touch mobile: snap por card ──
     let touchStartX = 0;
-    let touchScrollLeft = 0;
-
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].pageX;
-        touchScrollLeft = carousel.scrollLeft;
     }, { passive: true });
 
     carousel.addEventListener('touchend', (e) => {
+        if (window.innerWidth > 768) return;
         const touchEndX = e.changedTouches[0].pageX;
         const diff = touchStartX - touchEndX;
-        // Se arrastou mais de 30px, snapa para o próximo card
-        if (Math.abs(diff) > 30) {
-            const cardWidth = window.innerWidth <= 768 ? carousel.offsetWidth : 380;
-            const direction = diff > 0 ? 1 : -1;
-            carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        if (Math.abs(diff) > 40) {
+            scrollTestimonials(diff > 0 ? 'right' : 'left');
         }
     }, { passive: true });
 }
