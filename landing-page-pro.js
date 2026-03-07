@@ -104,8 +104,8 @@ let cursor = null;
 let cursorFollower = null;
 
 function initCustomCursor() {
-    // Não inicializar em dispositivos touch/mobile
     if (window.innerWidth <= 768 || ('ontouchstart' in window)) return;
+    cursor = document.createElement('div');
     cursor.style.cssText = `
         position: fixed;
         width: 10px;
@@ -400,24 +400,38 @@ document.querySelectorAll('.fade-in-item').forEach(item => {
 // PARALLAX SCROLL EFFECT
 // ================================================================
 window.addEventListener('scroll', () => {
-    // ── MOBILE: desligar parallax completamente ──
-    if (window.innerWidth <= 768 || ('ontouchstart' in window)) return;
-
-    const scrolled = window.pageYOffset;
-    
     const heroContent = document.querySelector('.hero-content');
     const heroVideo = document.querySelector('.hero-video');
-    
+
+    // MOBILE: zerar qualquer transform aplicado e sair
+    if (window.innerWidth <= 768 || ('ontouchstart' in window)) {
+        if (heroContent) heroContent.style.transform = '';
+        if (heroVideo) heroVideo.style.transform = '';
+        document.querySelectorAll('.floating').forEach(el => { el.style.transform = ''; });
+        return;
+    }
+
+    const scrolled = window.pageYOffset;
     if (heroContent && heroVideo) {
         heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
         heroVideo.style.transform = `translateY(${scrolled * 0.2}px)`;
     }
-    
     document.querySelectorAll('.floating').forEach(el => {
         const rect = el.getBoundingClientRect();
         const scrollPercent = rect.top / window.innerHeight;
         el.style.transform = `translateY(${scrollPercent * 30}px)`;
     });
+});
+
+// Resetar transforms ao redimensionar para mobile
+window.addEventListener('resize', () => {
+    if (window.innerWidth <= 768) {
+        const heroContent = document.querySelector('.hero-content');
+        const heroVideo = document.querySelector('.hero-video');
+        if (heroContent) heroContent.style.transform = '';
+        if (heroVideo) heroVideo.style.transform = '';
+        document.querySelectorAll('.floating').forEach(el => { el.style.transform = ''; });
+    }
 });
 
 // ================================================================
