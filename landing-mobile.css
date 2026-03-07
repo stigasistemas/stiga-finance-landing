@@ -514,3 +514,115 @@
 /* ================================================================
    FIM LANDING MOBILE CSS
    ================================================================ */
+
+/* ================================================================
+   CORREÇÕES MOBILE v2 — BUGS REPORTADOS
+   1. Carrossel de depoimentos quebrando
+   2. Botão CTA sumindo ao rolar
+   3. Cursor customizado no mobile
+   ================================================================ */
+
+@media (max-width: 768px) {
+
+    /* ── CARROSSEL: cards não quebram no meio ── */
+    .testimonials-carousel {
+        display: flex !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 16px !important;
+        padding: 8px 16px 20px !important;
+        scrollbar-width: none !important;
+    }
+
+    .testimonials-carousel::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .testimonial-card {
+        flex: 0 0 calc(100vw - 64px) !important;
+        min-width: calc(100vw - 64px) !important;
+        max-width: calc(100vw - 64px) !important;
+        scroll-snap-align: center !important;
+        padding: 24px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── BOTÃO CTA: não some ao rolar ── */
+    .hero-content {
+        transform: none !important;
+        will-change: auto !important;
+    }
+
+    .hero-cta {
+        position: relative !important;
+        z-index: 10 !important;
+        transform: none !important;
+    }
+
+    .mega-btn {
+        position: relative !important;
+        z-index: 10 !important;
+        transform: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: flex !important;
+    }
+
+    /* ── PARALAX: desligar no mobile ── */
+    .hero-visual,
+    .hero-video,
+    .floating {
+        transform: none !important;
+        animation: none !important;
+    }
+
+    /* ── CURSOR CUSTOMIZADO: esconder no mobile ── */
+    body > div[style*="border-radius: 50%"][style*="pointer-events: none"] {
+        display: none !important;
+    }
+
+    /* ── TEXTOS DO CARROSSEL: não cortar ── */
+    .testimonial-text {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        display: block !important;
+        -webkit-line-clamp: unset !important;
+    }
+
+    .testimonial-author {
+        margin-top: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    /* ── BOTÕES DO CARROSSEL: posição correta ── */
+    .carousel-controls {
+        display: flex !important;
+        justify-content: center !important;
+        gap: 16px !important;
+        margin-top: 16px !important;
+    }
+
+    .carousel-btn {
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+    }
+}
+
+/* ── PARALAX: desligar em touch devices ── */
+@media (hover: none) and (pointer: coarse) {
+    .hero-content,
+    .hero-visual,
+    .hero-video {
+        transform: none !important;
+        transition: none !important;
+    }
+}
