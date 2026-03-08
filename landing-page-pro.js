@@ -233,32 +233,18 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-function initAnimations() {
+document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
         observer.observe(el);
-        // Fallback duplo: forçar visibilidade se observer falhar
+        // Fallback: se após 800ms ainda não animou, forçar visibilidade
         setTimeout(() => {
             if (!el.classList.contains('animated')) {
                 el.classList.add('animated');
             }
-        }, 600);
+        }, 800);
     });
-    // Garantia extra: mostrar TUDO após 1.5s independente do estado
-    setTimeout(() => {
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-            el.classList.add('animated');
-        });
-    }, 1500);
-}
-
-// Rodar quando DOM estiver pronto (qualquer método que funcionar primeiro)
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initAnimations);
-} else {
-    // DOM já está pronto
-    initAnimations();
-}
+});
 
 // ================================================================
 // COUNTER ANIMATION
@@ -561,10 +547,16 @@ function _carouselCardWidth(carousel) {
 
 // Snap suave ao card mais próximo
 function _snapCarousel(carousel) {
-    const cw = _carouselCardWidth(carousel);
-    const maxIdx = carousel.querySelectorAll('.testimonial-card').length - 1;
-    const idx = Math.round(carousel.scrollLeft / cw);
-    carousel.scrollTo({ left: Math.max(0, Math.min(idx, maxIdx)) * cw, behavior: 'smooth' });
+    // Aguarda scroll terminar antes de calcular posição
+    clearTimeout(carousel._snapTimer);
+    carousel._snapTimer = setTimeout(() => {
+        const cw = _carouselCardWidth(carousel);
+        const cards = carousel.querySelectorAll('.testimonial-card');
+        const maxIdx = cards.length - 1;
+        const idx = Math.round(carousel.scrollLeft / cw);
+        const targetIdx = Math.max(0, Math.min(idx, maxIdx));
+        carousel.scrollTo({ left: targetIdx * cw, behavior: 'smooth' });
+    }, 50);
 }
 
 function scrollTestimonials(direction) {
@@ -610,7 +602,10 @@ function scrollTestimonials(direction) {
         isDown = false;
         carousel.style.cursor = 'grab';
         carousel.style.userSelect = '';
-        if (dragged) _snapCarousel(carousel);
+        if (dragged) {
+            // Pequeno delay para o momentum natural parar antes do snap
+            setTimeout(() => _snapCarousel(carousel), 80);
+        }
     });
 
     // Evitar click em links após drag
@@ -629,7 +624,7 @@ function scrollTestimonials(direction) {
         if (Math.abs(diff) > 40) {
             scrollTestimonials(diff > 0 ? 'right' : 'left');
         } else {
-            _snapCarousel(carousel);
+            setTimeout(() => _snapCarousel(carousel), 80);
         }
     }, { passive: true });
 })();
