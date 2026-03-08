@@ -163,13 +163,24 @@ body {
    ================================================================ */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    /* Fallback CSS puro: se JS não rodar, revelar após 2s */
+    animation: revealFallback 0.01s 2s forwards;
+}
+
+@keyframes revealFallback {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .animate-on-scroll.animated {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    visibility: visible !important;
+    animation: none !important;
 }
 
 /* ================================================================

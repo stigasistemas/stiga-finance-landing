@@ -233,18 +233,32 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
         observer.observe(el);
-        // Fallback: se após 800ms ainda não animou, forçar visibilidade
+        // Fallback duplo: forçar visibilidade se observer falhar
         setTimeout(() => {
             if (!el.classList.contains('animated')) {
                 el.classList.add('animated');
             }
-        }, 800);
+        }, 600);
     });
-});
+    // Garantia extra: mostrar TUDO após 1.5s independente do estado
+    setTimeout(() => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.classList.add('animated');
+        });
+    }, 1500);
+}
+
+// Rodar quando DOM estiver pronto (qualquer método que funcionar primeiro)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+    // DOM já está pronto
+    initAnimations();
+}
 
 // ================================================================
 // COUNTER ANIMATION
