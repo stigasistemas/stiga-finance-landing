@@ -36,6 +36,18 @@
 }
 
 /* ================================================================
+   TABLET (1024px): ocultar coluna de vídeo na hero
+   ================================================================ */
+@media (max-width: 1024px) {
+    .hero-video {
+        display: none;
+    }
+    .hero-container {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ================================================================
    NAVBAR MOBILE
    ================================================================ */
 @media (max-width: 768px) {
@@ -569,6 +581,26 @@
 
     .stats-row {
         grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+/* ================================================================
+   SEGURANÇA: garantir que animate-on-scroll não trava no mobile
+   Elementos na hero nunca devem ficar invisíveis
+   ================================================================ */
+@media (max-width: 768px) {
+    /* Hero elements are always visible - no animation dependency */
+    .hero-content.animate-on-scroll,
+    .hero-content .animate-on-scroll,
+    .hero-badge,
+    .hero-title,
+    .hero-subtitle,
+    .hero-cta,
+    .hero-benefits,
+    .stats-row,
+    .hero-video-mobile {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 

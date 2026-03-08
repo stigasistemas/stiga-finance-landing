@@ -217,8 +217,8 @@ if (scrollTopBtn) {
 // ANIMATE ON SCROLL
 // ================================================================
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.01,
+    rootMargin: '0px 0px 0px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -227,7 +227,7 @@ const observer = new IntersectionObserver((entries) => {
             const delay = entry.target.dataset.delay || 0;
             setTimeout(() => {
                 entry.target.classList.add('animated');
-            }, delay);
+            }, parseInt(delay));
             observer.unobserve(entry.target);
         }
     });
@@ -235,7 +235,15 @@ const observer = new IntersectionObserver((entries) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach(el => observer.observe(el));
+    animatedElements.forEach(el => {
+        observer.observe(el);
+        // Fallback: se após 800ms ainda não animou, forçar visibilidade
+        setTimeout(() => {
+            if (!el.classList.contains('animated')) {
+                el.classList.add('animated');
+            }
+        }, 800);
+    });
 });
 
 // ================================================================

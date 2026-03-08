@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+
 /* Vídeo mobile: oculto no desktop */
 .hero-video-mobile { display: none; }
 
@@ -6,7 +8,6 @@
    Design premium com animações e efeitos avançados
    ================================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
 
 :root {
     --gold: #D4AF37;
@@ -1838,11 +1839,13 @@ section {
     font-size: 0.9rem;
 }
 
-/* Mobile */
+/* Mobile - usa 85vw para caber bem em telas pequenas */
 @media (max-width: 768px) {
     .testimonials-carousel .testimonial-card {
-        min-width: 280px;
-        max-width: 280px;
+        flex: 0 0 85vw !important;
+        min-width: 85vw !important;
+        max-width: 85vw !important;
+        padding: 20px 16px !important;
     }
 }
 
