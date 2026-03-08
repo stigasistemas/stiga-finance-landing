@@ -331,25 +331,40 @@ if (videoPlaceholder) {
 // MOBILE MENU TOGGLE
 // ================================================================
 function toggleMobileMenu() {
-    const navLinks = document.getElementById('navLinks');
     const mobileBtn = document.querySelector('.mobile-menu-btn');
-    
-    if (navLinks.style.display === 'flex') {
-        navLinks.style.display = 'none';
-        mobileBtn.classList.remove('active');
-    } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '100%';
-        navLinks.style.left = '0';
-        navLinks.style.right = '0';
-        navLinks.style.background = 'rgba(10, 14, 23, 0.98)';
-        navLinks.style.padding = '20px';
-        navLinks.style.gap = '20px';
-        navLinks.style.borderTop = '1px solid rgba(212, 175, 55, 0.2)';
-        mobileBtn.classList.add('active');
+    let menu = document.getElementById('mobileDropdown');
+
+    // Criar menu se não existir
+    if (!menu) {
+        menu = document.createElement('div');
+        menu.id = 'mobileDropdown';
+        Object.assign(menu.style, {
+            position: 'fixed',
+            top: '60px',
+            left: '0',
+            right: '0',
+            background: 'rgba(10, 14, 23, 0.98)',
+            borderBottom: '1px solid rgba(212,175,55,0.3)',
+            padding: '20px 16px',
+            zIndex: '9999',
+            display: 'none',
+            flexDirection: 'column',
+            gap: '0',
+            backdropFilter: 'blur(20px)',
+        });
+        menu.innerHTML = `
+            <a href="#recursos" style="color:#F4E5C3;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:1rem;font-family:Cinzel,serif;letter-spacing:1px;text-decoration:none;display:block;" onclick="toggleMobileMenu()">Recursos</a>
+            <a href="#planos"   style="color:#F4E5C3;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:1rem;font-family:Cinzel,serif;letter-spacing:1px;text-decoration:none;display:block;" onclick="toggleMobileMenu()">Planos</a>
+            <a href="#depoimentos" style="color:#F4E5C3;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:1rem;font-family:Cinzel,serif;letter-spacing:1px;text-decoration:none;display:block;" onclick="toggleMobileMenu()">Depoimentos</a>
+            <a href="#faq"     style="color:#F4E5C3;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:1rem;font-family:Cinzel,serif;letter-spacing:1px;text-decoration:none;display:block;" onclick="toggleMobileMenu()">FAQ</a>
+            <a href="#planos"  style="display:block;margin-top:16px;padding:14px 20px;background:linear-gradient(135deg,#D4AF37,#B8942A);color:#0A0E17;text-align:center;border-radius:8px;font-family:Cinzel,serif;font-size:0.9rem;font-weight:700;letter-spacing:1px;text-decoration:none;" onclick="toggleMobileMenu()">🚀 Começar Agora</a>
+        `;
+        document.body.appendChild(menu);
     }
+
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    mobileBtn.classList.toggle('active', !isOpen);
 }
 
 // ================================================================

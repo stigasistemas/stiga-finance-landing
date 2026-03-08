@@ -55,6 +55,11 @@
         padding: 12px 16px !important;
     }
 
+    .nav-container {
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
     .nav-logo {
         gap: 8px !important;
     }
@@ -69,12 +74,14 @@
         letter-spacing: 1px !important;
     }
 
+    /* nav-links escondido por padrão no mobile, mas JS pode mostrar */
     .nav-links {
-        display: none !important;
+        display: none;
     }
 
     .mobile-menu-btn {
         display: flex !important;
+        margin-left: 12px;
     }
 
     .nav-cta {
