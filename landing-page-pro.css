@@ -669,8 +669,8 @@ section {
 .solution-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
+    gap: 80px;
+    align-items: center;
 }
 
 .solution-description {
@@ -1152,9 +1152,10 @@ section {
     scroll-behavior: smooth;
     padding: 10px 4px 30px;
     cursor: grab;
-    scroll-snap-type: x mandatory;
+    /* scroll-snap desativado via JS durante drag, reativado após snap */
     scrollbar-width: thin;
-    scrollbar-color: var(--gold) rgba(212, 175, 55, 0.1);
+    scrollbar-color: var(--gold) rgba(212,175,55,0.1);
+    -webkit-overflow-scrolling: touch;
 }
 .testimonials-carousel::-webkit-scrollbar { height: 6px; }
 .testimonials-carousel::-webkit-scrollbar-track { background: rgba(212,175,55,0.1); border-radius:10px; }
@@ -1164,10 +1165,6 @@ section {
     flex: 0 0 340px;
     min-width: 340px;
     max-width: 340px;
-    scroll-snap-align: start;
-}
-
-.testimonial-card {
     background: var(--bg-card);
     padding: 35px;
     border-radius: 20px;
@@ -1317,9 +1314,6 @@ section {
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .cta-icon {
@@ -1799,7 +1793,7 @@ section {
 /* ================================================================
    TESTIMONIALS CAROUSEL - HORIZONTAL SCROLL
    ================================================================ */
-/* carousel styles moved to main block above */
+/* carousel desktop styles defined above */
 
 /* Setas de navegação */
 .carousel-nav {

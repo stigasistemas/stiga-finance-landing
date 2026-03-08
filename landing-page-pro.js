@@ -217,8 +217,8 @@ if (scrollTopBtn) {
 // ANIMATE ON SCROLL
 // ================================================================
 const observerOptions = {
-    threshold: 0.05,
-    rootMargin: '0px 0px -20px 0px'
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -530,22 +530,32 @@ console.log('✅ Sistema de vídeo testimonials carregado');
 // ================================================================
 // TESTIMONIALS CAROUSEL NAVIGATION
 // ================================================================
+// Snap ao card mais próximo
+function snapCarousel(carousel) {
+    const card = carousel.querySelector('.testimonial-card');
+    const gap = 24;
+    const cardWidth = card ? card.offsetWidth + gap : 364;
+    const maxCards = carousel.querySelectorAll('.testimonial-card').length - 1;
+    const index = Math.round(carousel.scrollLeft / cardWidth);
+    const clamped = Math.max(0, Math.min(index, maxCards));
+    carousel.scrollTo({ left: clamped * cardWidth, behavior: 'smooth' });
+}
+
 function scrollTestimonials(direction) {
     const carousel = document.querySelector('.testimonials-carousel');
     if (!carousel) return;
     const card = carousel.querySelector('.testimonial-card');
-    const cardWidth = card ? card.offsetWidth + 24 : 364;
-    const cards = carousel.querySelectorAll('.testimonial-card');
-    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const gap = window.innerWidth <= 768 ? 12 : 24;
+    const cardWidth = card ? card.offsetWidth + gap : 364;
+    const maxCards = carousel.querySelectorAll('.testimonial-card').length - 1;
     const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
-    const maxIndex = cards.length - 1;
     let next = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
-    next = Math.max(0, Math.min(next, maxIndex));
+    next = Math.max(0, Math.min(next, maxCards));
     carousel.scrollTo({ left: next * cardWidth, behavior: 'smooth' });
 }
 
-// Drag com mouse (desktop) — corrigido para voltar ao snap mais próximo
-(function() {
+// Drag com mouse (desktop) — com snap ao soltar
+(function () {
     const carousel = document.querySelector('.testimonials-carousel');
     if (!carousel) return;
 
@@ -555,13 +565,16 @@ function scrollTestimonials(direction) {
     let hasDragged = false;
 
     carousel.style.cursor = 'grab';
+    // Desativa scroll-snap nativo para não travar durante o drag
+    carousel.style.scrollSnapType = 'none';
 
     carousel.addEventListener('mousedown', (e) => {
+        // Só ativa em botão esquerdo e fora de links/botões
+        if (e.button !== 0) return;
         isDown = true;
         hasDragged = false;
         carousel.style.cursor = 'grabbing';
-        carousel.style.scrollBehavior = 'auto';
-        startX = e.pageX;
+        startX = e.clientX;
         scrollStart = carousel.scrollLeft;
         e.preventDefault();
     });
@@ -570,38 +583,42 @@ function scrollTestimonials(direction) {
         if (!isDown) return;
         isDown = false;
         carousel.style.cursor = 'grab';
-        carousel.style.scrollBehavior = 'smooth';
-        // Snap ao card mais próximo ao soltar
-        const card = carousel.querySelector('.testimonial-card');
-        const cardWidth = card ? card.offsetWidth + 24 : 364;
-        const snapped = Math.round(carousel.scrollLeft / cardWidth);
-        const maxIndex = carousel.querySelectorAll('.testimonial-card').length - 1;
-        const finalIndex = Math.max(0, Math.min(snapped, maxIndex));
-        carousel.scrollTo({ left: finalIndex * cardWidth, behavior: 'smooth' });
+        if (hasDragged) {
+            // Snap ao card mais próximo ao soltar
+            snapCarousel(carousel);
+        }
     });
 
     document.addEventListener('mousemove', (e) => {
         if (!isDown) return;
-        const delta = startX - e.pageX;
-        if (Math.abs(delta) > 5) hasDragged = true;
+        const delta = startX - e.clientX;
+        if (Math.abs(delta) > 4) hasDragged = true;
         carousel.scrollLeft = scrollStart + delta;
     });
 
-    // Prevenir clique em links após drag
+    // Evitar click em links após drag
     carousel.addEventListener('click', (e) => {
-        if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
+        if (hasDragged) {
+            e.preventDefault();
+            e.stopPropagation();
+            hasDragged = false;
+        }
     }, true);
 
-    // Touch mobile
+    // Touch swipe (mobile)
     let touchStartX = 0;
+    let touchScrollStart = 0;
     carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].pageX;
+        touchStartX = e.touches[0].clientX;
+        touchScrollStart = carousel.scrollLeft;
     }, { passive: true });
 
     carousel.addEventListener('touchend', (e) => {
-        const diff = touchStartX - e.changedTouches[0].pageX;
+        const diff = touchStartX - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 40) {
             scrollTestimonials(diff > 0 ? 'right' : 'left');
+        } else {
+            snapCarousel(carousel);
         }
     }, { passive: true });
 })();
