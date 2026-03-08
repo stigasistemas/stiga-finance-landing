@@ -233,18 +233,21 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
-    animatedElements.forEach(el => {
-        observer.observe(el);
-        // Fallback: se após 800ms ainda não animou, forçar visibilidade
-        setTimeout(() => {
-            if (!el.classList.contains('animated')) {
-                el.classList.add('animated');
-            }
-        }, 800);
-    });
-});
+    animatedElements.forEach(el => observer.observe(el));
+    // Fallback rápido: 300ms garante visibilidade sem atrasar o site
+    setTimeout(() => {
+        document.querySelectorAll('.animate-on-scroll:not(.animated)').forEach(el => {
+            el.classList.add('animated');
+        });
+    }, 300);
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+    initAnimations();
+}
 
 // ================================================================
 // COUNTER ANIMATION
@@ -274,13 +277,10 @@ const counterObserver = new IntersectionObserver((entries) => {
             counterObserver.unobserve(entry.target);
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.01 });
 
-document.querySelectorAll('.stat-number').forEach(counter => {
-    const targetElement = counter.querySelector('[data-target]') || counter;
-    if (targetElement.dataset.target) {
-        counterObserver.observe(counter);
-    }
+document.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+    counterObserver.observe(counter);
 });
 
 // ================================================================
@@ -547,15 +547,12 @@ function _carouselCardWidth(carousel) {
 
 // Snap suave ao card mais próximo
 function _snapCarousel(carousel) {
-    // Aguarda scroll terminar antes de calcular posição
     clearTimeout(carousel._snapTimer);
     carousel._snapTimer = setTimeout(() => {
         const cw = _carouselCardWidth(carousel);
-        const cards = carousel.querySelectorAll('.testimonial-card');
-        const maxIdx = cards.length - 1;
+        const maxIdx = carousel.querySelectorAll('.testimonial-card').length - 1;
         const idx = Math.round(carousel.scrollLeft / cw);
-        const targetIdx = Math.max(0, Math.min(idx, maxIdx));
-        carousel.scrollTo({ left: targetIdx * cw, behavior: 'smooth' });
+        carousel.scrollTo({ left: Math.max(0, Math.min(idx, maxIdx)) * cw, behavior: 'smooth' });
     }, 50);
 }
 
@@ -602,10 +599,7 @@ function scrollTestimonials(direction) {
         isDown = false;
         carousel.style.cursor = 'grab';
         carousel.style.userSelect = '';
-        if (dragged) {
-            // Pequeno delay para o momentum natural parar antes do snap
-            setTimeout(() => _snapCarousel(carousel), 80);
-        }
+        if (dragged) _snapCarousel(carousel);
     });
 
     // Evitar click em links após drag
@@ -624,7 +618,7 @@ function scrollTestimonials(direction) {
         if (Math.abs(diff) > 40) {
             scrollTestimonials(diff > 0 ? 'right' : 'left');
         } else {
-            setTimeout(() => _snapCarousel(carousel), 80);
+            _snapCarousel(carousel);
         }
     }, { passive: true });
 })();
