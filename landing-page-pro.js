@@ -217,8 +217,8 @@ if (scrollTopBtn) {
 // ANIMATE ON SCROLL
 // ================================================================
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -20px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -533,60 +533,78 @@ console.log('✅ Sistema de vídeo testimonials carregado');
 function scrollTestimonials(direction) {
     const carousel = document.querySelector('.testimonials-carousel');
     if (!carousel) return;
-
-    if (window.innerWidth <= 768) {
-        // Mobile: snap por card usando largura real
-        const card = carousel.querySelector('.testimonial-card');
-        const cardWidth = card ? card.offsetWidth + 16 : carousel.offsetWidth;
-        const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
-        const cards = carousel.querySelectorAll('.testimonial-card');
-        const maxIndex = cards.length - 1;
-        let next = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
-        next = Math.max(0, Math.min(next, maxIndex));
-        carousel.scrollTo({ left: next * cardWidth, behavior: 'smooth' });
-    } else {
-        carousel.scrollBy({ left: direction === 'left' ? -380 : 380, behavior: 'smooth' });
-    }
+    const card = carousel.querySelector('.testimonial-card');
+    const cardWidth = card ? card.offsetWidth + 24 : 364;
+    const cards = carousel.querySelectorAll('.testimonial-card');
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    const currentIndex = Math.round(carousel.scrollLeft / cardWidth);
+    const maxIndex = cards.length - 1;
+    let next = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
+    next = Math.max(0, Math.min(next, maxIndex));
+    carousel.scrollTo({ left: next * cardWidth, behavior: 'smooth' });
 }
 
-// Drag com mouse (desktop)
-let isDown = false;
-let startX;
-let scrollLeft;
+// Drag com mouse (desktop) — corrigido para voltar ao snap mais próximo
+(function() {
+    const carousel = document.querySelector('.testimonials-carousel');
+    if (!carousel) return;
 
-const carousel = document.querySelector('.testimonials-carousel');
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasDragged = false;
 
-if (carousel) {
-    carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        carousel.style.cursor = 'grabbing';
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-    carousel.addEventListener('mouseleave', () => { isDown = false; carousel.style.cursor = 'grab'; });
-    carousel.addEventListener('mouseup', () => { isDown = false; carousel.style.cursor = 'grab'; });
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        carousel.scrollLeft = scrollLeft - (x - startX) * 2;
-    });
     carousel.style.cursor = 'grab';
 
-    // Touch mobile: swipe para navegar entre cards
+    carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        hasDragged = false;
+        carousel.style.cursor = 'grabbing';
+        carousel.style.scrollBehavior = 'auto';
+        startX = e.pageX;
+        scrollStart = carousel.scrollLeft;
+        e.preventDefault();
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        carousel.style.cursor = 'grab';
+        carousel.style.scrollBehavior = 'smooth';
+        // Snap ao card mais próximo ao soltar
+        const card = carousel.querySelector('.testimonial-card');
+        const cardWidth = card ? card.offsetWidth + 24 : 364;
+        const snapped = Math.round(carousel.scrollLeft / cardWidth);
+        const maxIndex = carousel.querySelectorAll('.testimonial-card').length - 1;
+        const finalIndex = Math.max(0, Math.min(snapped, maxIndex));
+        carousel.scrollTo({ left: finalIndex * cardWidth, behavior: 'smooth' });
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const delta = startX - e.pageX;
+        if (Math.abs(delta) > 5) hasDragged = true;
+        carousel.scrollLeft = scrollStart + delta;
+    });
+
+    // Prevenir clique em links após drag
+    carousel.addEventListener('click', (e) => {
+        if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    // Touch mobile
     let touchStartX = 0;
     carousel.addEventListener('touchstart', (e) => {
         touchStartX = e.touches[0].pageX;
     }, { passive: true });
 
     carousel.addEventListener('touchend', (e) => {
-        if (window.innerWidth > 768) return;
         const diff = touchStartX - e.changedTouches[0].pageX;
         if (Math.abs(diff) > 40) {
             scrollTestimonials(diff > 0 ? 'right' : 'left');
         }
     }, { passive: true });
-}
+})();
 
 console.log('✅ Carousel de depoimentos horizontal carregado');
 

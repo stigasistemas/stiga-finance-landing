@@ -363,23 +363,24 @@
         overflow-y: hidden !important;
         scroll-snap-type: x mandatory !important;
         -webkit-overflow-scrolling: touch !important;
-        gap: 16px !important;
-        padding: 8px 16px 20px !important;
+        gap: 12px !important;
+        padding: 8px 0 20px !important;
         scrollbar-width: none !important;
         width: 100% !important;
         box-sizing: border-box !important;
+        cursor: default !important;
     }
 
     .testimonials-carousel::-webkit-scrollbar {
         display: none !important;
     }
 
-    /* Cada card ocupa 85% da tela e encaixa no snap */
+    /* Cada card ocupa 88% da tela e encaixa no snap */
     .testimonial-card {
-        flex: 0 0 85vw !important;
-        min-width: 85vw !important;
-        max-width: 85vw !important;
-        scroll-snap-align: start !important;
+        flex: 0 0 88vw !important;
+        min-width: 88vw !important;
+        max-width: 88vw !important;
+        scroll-snap-align: center !important;
         padding: 20px 16px !important;
         box-sizing: border-box !important;
         height: auto !important;

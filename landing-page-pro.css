@@ -669,8 +669,8 @@ section {
 .solution-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+    gap: 60px;
+    align-items: start;
 }
 
 .solution-description {
@@ -1144,9 +1144,27 @@ section {
 }
 
 .testimonials-carousel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 35px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding: 10px 4px 30px;
+    cursor: grab;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) rgba(212, 175, 55, 0.1);
+}
+.testimonials-carousel::-webkit-scrollbar { height: 6px; }
+.testimonials-carousel::-webkit-scrollbar-track { background: rgba(212,175,55,0.1); border-radius:10px; }
+.testimonials-carousel::-webkit-scrollbar-thumb { background: var(--gold); border-radius:10px; }
+
+.testimonial-card {
+    flex: 0 0 340px;
+    min-width: 340px;
+    max-width: 340px;
+    scroll-snap-align: start;
 }
 
 .testimonial-card {
@@ -1299,6 +1317,9 @@ section {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cta-icon {
@@ -1778,42 +1799,7 @@ section {
 /* ================================================================
    TESTIMONIALS CAROUSEL - HORIZONTAL SCROLL
    ================================================================ */
-.testimonials-carousel {
-    display: flex;
-    gap: 30px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    padding: 20px 0 40px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--gold) rgba(212, 175, 55, 0.1);
-}
-
-/* Scrollbar customizada */
-.testimonials-carousel::-webkit-scrollbar {
-    height: 8px;
-}
-
-.testimonials-carousel::-webkit-scrollbar-track {
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 10px;
-}
-
-.testimonials-carousel::-webkit-scrollbar-thumb {
-    background: var(--gold);
-    border-radius: 10px;
-}
-
-.testimonials-carousel::-webkit-scrollbar-thumb:hover {
-    background: var(--gold-dark);
-}
-
-/* Cards do carousel */
-.testimonials-carousel .testimonial-card {
-    min-width: 350px;
-    max-width: 350px;
-    flex-shrink: 0;
-}
+/* carousel styles moved to main block above */
 
 /* Setas de navegação */
 .carousel-nav {
