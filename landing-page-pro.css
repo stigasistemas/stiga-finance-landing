@@ -1,3 +1,6 @@
+/* Vídeo mobile: oculto no desktop */
+.hero-video-mobile { display: none; }
+
 /* ================================================================
    STIGA FINANCE - LANDING PAGE ULTRA PROFISSIONAL
    Design premium com animações e efeitos avançados
@@ -1152,7 +1155,6 @@ section {
     scroll-behavior: smooth;
     padding: 10px 4px 30px;
     cursor: grab;
-    /* scroll-snap desativado via JS durante drag, reativado após snap */
     scrollbar-width: thin;
     scrollbar-color: var(--gold) rgba(212,175,55,0.1);
     -webkit-overflow-scrolling: touch;
@@ -1793,7 +1795,7 @@ section {
 /* ================================================================
    TESTIMONIALS CAROUSEL - HORIZONTAL SCROLL
    ================================================================ */
-/* carousel desktop styles defined above */
+/* carousel styles definidos acima */
 
 /* Setas de navegação */
 .carousel-nav {

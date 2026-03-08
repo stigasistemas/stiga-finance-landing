@@ -206,34 +206,28 @@
         animation: none !important;
     }
 
-    /* Hero video — fica abaixo do conteúdo, não sobrepõe o botão */
+    /* Vídeo desktop (coluna direita): ocultar no mobile */
     .hero-video {
-        position: relative !important;
-        z-index: 0 !important;
-        order: 2 !important;
+        display: none !important;
+    }
+
+    /* Vídeo mobile (após badge): mostrar */
+    .hero-video-mobile {
+        display: block !important;
         width: 100% !important;
-        max-width: 380px !important;
-        margin: 0 auto !important;
-    }
-
-    /* Botão CTA fica sempre clicável */
-    .hero-cta {
-        position: relative !important;
-        z-index: 10 !important;
-    }
-
-    .hero-content {
-        position: relative !important;
-        z-index: 10 !important;
-    }
-
-    /* Video container não vaza para fora */
-    .video-container {
+        margin: 16px 0 24px !important;
         position: relative !important;
         z-index: 0 !important;
     }
 
-    .video-glow {
+    .hero-video-mobile .video-wrapper {
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(212,175,55,0.3) !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+    }
+
+    .hero-video-mobile .video-glow {
         display: none !important;
     }
 }
